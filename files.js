@@ -39,9 +39,10 @@
     if (info) {
       var pct = Math.min(100, info.mine / Math.max(1, info.person_limit) * 100);
       h += '<section class="card2"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px"><b>☁️ Your storage: ' + size(info.mine) + " of " + size(info.person_limit) + "</b>" +
-        '<span style="color:var(--soft);font-size:.86rem">' + info.files + " files · videos " + size(info.videos || 0) + (info.extra_gb ? " · " + info.extra_gb + " GB bought" : "") + "</span></div>" +
+        '<span style="color:var(--soft);font-size:.86rem">' + info.files + " files" + (info.extra_gb ? " · " + info.extra_gb + " GB bought" : "") + "</span></div>" +
         '<div style="height:10px;border-radius:999px;background:var(--tool);overflow:hidden;margin:8px 0"><div style="height:100%;width:' + pct.toFixed(1) + "%;background:" + (pct > 90 ? "#dc2626" : pct > 70 ? "#f59e0b" : "var(--a1)") + '"></div></div>' +
         '<p style="color:var(--soft);font-size:.84rem;margin:0">The whole Launchpad has ' + size(info.limit) + " (1 GB for each of the " + info.people + " people, plus storage people have bought), and " + size(info.used) + " is used.</p>" +
+        (info.video_share ? '<p style="font-size:.86rem;margin:8px 0 0">🎬 Videos have their own space: yours use <b>' + size(info.videos || 0) + "</b> of your " + size(info.video_share) + " share, out of " + size(info.video_limit) + " for the whole Launchpad (" + size(info.video_used || 0) + " used). Videos are up to 30 minutes, in 720p.</p>" : "") +
         (bill ? '<p style="font-size:.9rem;margin:10px 0 0">' + (bill.exempt ? "💰 Pay as you go: your files are free (you're a Launchpad admin)."
           : "💰 Pay as you go: a file is free for its first 48 hours, then has a grace period (a day and a half, or 2 days at the weekend), then costs " + bill.cost + "p a day. School holidays are free" + (bill["break"] ? " - it's " + esc(bill["break"]) + " now" : "") + ".<br>Your files cost <b>" + perDay + "p a day</b> and you have <b>" + bill.pence + "p</b>. A file that can't be paid for is locked until it's paid for - it can't be opened or downloaded, but nothing is deleted.") + "</p>" : "") +
         '<div class="buy"><button type="button" class="of-btn" id="buyBtn"' + ((info.extra_gb || 0) >= 20 ? " disabled" : "") + ">➕ Buy 1 GB more - 25 Launchpad Pounds</button>" +
@@ -71,10 +72,10 @@
   }
   function vidRows() {
     var list = vids.filter(function (v) { return !q || (v.title || "").toLowerCase().indexOf(q.toLowerCase()) >= 0; });
-    return '<p style="color:var(--soft);font-size:.88rem;margin:0 0 10px">Videos you\'ve posted or kept from Vids. They count towards your storage. <a href="' + HOST + '/">See everyone\'s videos →</a></p><div class="rows">' +
+    return '<p style="color:var(--soft);font-size:.88rem;margin:0 0 10px">Videos you\'ve posted or kept from Vids. They use the video space, not your file storage. <a href="' + HOST + '/">See everyone\'s videos →</a></p><div class="rows">' +
       (list.map(function (v) {
         var st = v.hidden ? '<span class="st locked">Hidden - reported</span>' : v.shown ? '<span class="st free">Everyone can watch</span>' : '<span class="st paying">Just for you</span>';
-        return '<div class="row"><span class="ic">🎬</span><span class="t"><a href="' + HOST + "/watch/?v=" + encodeURIComponent(v.id) + '">' + esc(v.title) + "</a><small>" + when(v.at) + " · " + size(v.bytes) + " · " + v.views + " views · " + v.likes + " ❤️</small></span>" + st +
+        return '<div class="row"><span class="ic">' + (v.short ? "📱" : "🎬") + '</span><span class="t"><a href="' + HOST + (v.short ? "/shorts/?v=" : "/watch/?v=") + encodeURIComponent(v.id) + '">' + esc(v.title) + "</a><small>" + when(v.at) + " · " + size(v.bytes) + " · " + v.views + " views · " + v.likes + " ❤️</small></span>" + st +
           '<span class="acts"><button type="button" data-vshow="' + esc(v.id) + '">' + (v.shown ? "Make it just for me" : "Let everyone watch") + '</button><button type="button" data-vdel="' + esc(v.id) + '" aria-label="Delete ' + esc(v.title) + '">🗑</button></span></div>';
       }).join("") || '<p class="empty">No videos yet. Make one in <a href="' + SUITE + '/vids/">Vids</a> and post it.</p>') + "</div>";
   }
