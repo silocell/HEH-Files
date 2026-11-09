@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>My Files - Launchpad</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="theme-color" content="#4f46e5">
+<script>
+try{ var m = document.cookie.match(/(?:^|; )hl_theme=(dark|light|system)/), t = m ? m[1] : JSON.parse(localStorage.getItem("hl.theme"));
+     if(t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t); }catch(e){}
+</script>
+<link rel="stylesheet" href="https://suite.civilinitiatives.org/office/office.css?b=20261109c">
+<style>
+:root{--a1:#4f46e5}
+body{overflow:auto;display:block}
+.top{position:sticky;top:0}
+.top .brand i{background:linear-gradient(135deg,#4f46e5,#0ea5e9)}
+main{max-width:1000px;margin:0 auto;padding:22px 16px 80px}
+h1{font-size:1.6rem;margin:4px 0 4px}
+.lead{color:var(--soft);margin:0 0 18px}
+.card2{background:var(--card);border:1px solid var(--rule);border-radius:20px;padding:16px 18px;margin-bottom:16px}
+.buy{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.buy .of-btn[disabled]{opacity:.5;cursor:default}
+.tabs3{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
+.tabs3 button{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;font-weight:700;font-size:.88rem}
+.tabs3 button[aria-pressed="true"]{background:var(--a1);border-color:var(--a1);color:#fff}
+.search{width:100%;height:42px;border:1px solid var(--rule);border-radius:12px;padding:0 14px;background:var(--card);margin-bottom:12px}
+.rows{display:grid;gap:8px}
+.row{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:10px 12px}
+.row .ic{font-size:1.6rem;width:40px;text-align:center;flex:none}
+.row .t{flex:1;min-width:0}
+.row .t a{font-weight:700;color:var(--ink);text-decoration:none;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .t a:hover{text-decoration:underline}
+.row small{color:var(--soft);display:block}
+.row .st{font-size:.78rem;font-weight:700;border-radius:999px;padding:3px 9px;white-space:nowrap;flex:none}
+.st.free{background:#dcfce7;color:#166534}.st.grace{background:#fef3c7;color:#92400e}.st.paying{background:#e0e7ff;color:#3730a3}.st.locked{background:#fee2e2;color:#991b1b}.st.shared{background:#f3e8ff;color:#6b21a8}
+.row .acts{display:flex;gap:4px;flex:none}
+.row .acts button,.row .acts a{border:1px solid var(--rule);background:var(--tool);border-radius:10px;padding:6px 10px;font-size:.84rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+.row .acts button:hover,.row .acts a:hover{border-color:var(--a1)}
+.row .acts .pay{background:var(--a1);border-color:var(--a1);color:#fff}
+.empty{color:var(--soft);text-align:center;padding:30px}
+.signin{text-align:center;padding:60px 10px}
+@media (max-width:640px){ .row{flex-wrap:wrap} .row .acts{width:100%;justify-content:flex-end} }
+</style>
+<link rel="stylesheet" href="https://civilinitiatives.org/glass.css?b=20261102a">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/" title="My Files"><i aria-hidden="true">🗂</i><span>My Files</span></a>
+  <span class="status" id="status" aria-live="polite"></span>
+  <span class="sp"></span>
+  <a class="tbtn" href="https://suite.civilinitiatives.org/">Suite</a>
+  <a class="tbtn" href="https://hosting.civilinitiatives.org/">🎬<span class="lbl"> Videos</span></a>
+  <button class="tbtn" id="themeBtn" type="button"></button>
+  <a class="tbtn" href="https://civilinitiatives.org/">Launchpad</a>
+</header>
+<main id="main"><p class="empty">Loading…</p></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.0/dist/umd/supabase.js"></script>
+<script src="/auth-store.js?b=20261026a"></script>
+<script src="https://suite.civilinitiatives.org/office/office.js?b=20261109d"></script>
+<script src="/files.js?b=20261109a"></script>
+</body>
+</html>
