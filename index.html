@@ -17,10 +17,7 @@ try{ var m = document.cookie.match(/(?:^|; )hl_theme=(dark|light|system)/), t = 
 :root{--a1:#4f46e5}
 body{overflow:auto;display:block}
 .top{position:sticky;top:0}
-.top .brand.lp img{width:30px;height:30px;border-radius:9px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.25)}
-.top .brand.lp:hover span{text-decoration:underline}
-.top .tbtn.mine{background:rgba(255,255,255,.24)}
-@media (max-width:640px){ .top a.tbtn.mine{display:inline-flex} .top .tbtn.mine .lbl{display:inline} }
+.top .brand i{background:linear-gradient(135deg,#4f46e5,#0ea5e9)}
 main{max-width:1000px;margin:0 auto;padding:22px 16px 80px}
 h1{font-size:1.6rem;margin:4px 0 4px}
 .lead{color:var(--soft);margin:0 0 18px}
@@ -45,11 +42,6 @@ h1{font-size:1.6rem;margin:4px 0 4px}
 .row .acts button:hover,.row .acts a:hover{border-color:var(--a1)}
 .row .acts .pay{background:var(--a1);border-color:var(--a1);color:#fff}
 .empty{color:var(--soft);text-align:center;padding:30px}
-.upbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 12px}
-.upbar span{color:var(--soft);font-size:.86rem;flex:1;min-width:200px}
-.row .ic .thumb{width:40px;height:40px;object-fit:cover;border-radius:8px;display:block;background:var(--tool)}
-.drop{display:none;border:2px dashed var(--a1);border-radius:16px;padding:26px;text-align:center;font-weight:700;color:var(--a1);margin-bottom:10px}
-body.dragging .drop{display:block}
 .signin{text-align:center;padding:60px 10px}
 @media (max-width:640px){ .row{flex-wrap:wrap} .row .acts{width:100%;justify-content:flex-end} }
 </style>
@@ -57,19 +49,19 @@ body.dragging .drop{display:block}
 </head>
 <body>
 <header class="top">
-  <a class="brand lp" href="https://civilinitiatives.org/" title="Back to the Launchpad"><img src="https://civilinitiatives.org/icons/icon-192.png" alt="" width="30" height="30"><span>Launchpad</span></a>
+  <a class="brand" href="/" title="My Files"><i aria-hidden="true">🗂</i><span>My Files</span></a>
   <span class="status" id="status" aria-live="polite"></span>
   <span class="sp"></span>
   <a class="tbtn" href="https://suite.civilinitiatives.org/">Suite</a>
   <a class="tbtn" href="https://hosting.civilinitiatives.org/">🎬<span class="lbl"> Videos</span></a>
   <button class="tbtn" id="themeBtn" type="button"></button>
-  <a class="tbtn mine" href="/" aria-current="page">🗂<span class="lbl"> My Files</span></a>
+  <a class="tbtn" href="https://civilinitiatives.org/">Launchpad</a>
 </header>
 <main id="main"><p class="empty">Loading…</p></main>
 <footer style="text-align:center;color:var(--soft);font-size:.86rem;padding:0 16px 30px"><a href="https://developer.civilinitiatives.org/">👨‍💻 Made by the developer</a></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.0/dist/umd/supabase.js"></script>
 <script src="/auth-store.js?b=20261026a"></script>
 <script src="https://suite.civilinitiatives.org/office/office.js?b=20261111e"></script>
-<script src="/files.js?b=20261113a"></script>
+<script src="/files.js?b=20261112a"></script>
 </body>
 </html>
